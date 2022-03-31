@@ -3,7 +3,8 @@ import { extendTheme, theme as base } from "@chakra-ui/react";
 
 // Customize Breakpoints
 const breakpoints = {
-  sm: "640px",
+  s: "0px",
+  sm: "480px",
   md: "768px",
   lg: "1024px",
   xl: "1280px",
@@ -37,13 +38,11 @@ const theme = extendTheme({
         hero_h1: {
           fontFamily: "Merriweather, sans-serif",
           fontWeight: "900",
-          fontSize: ["2xl", "2xl", "4xl", "5xl"],
         },
         hero_h2: {
           fontFamily: "Merriweather, sans-serif",
           fontWeight: "300",
           fontStyle: "italic",
-          fontSize: ["2xl", "2xl", "4xl", "5xl"],
         },
       },
     },

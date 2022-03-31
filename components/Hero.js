@@ -7,7 +7,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import heroImage from "/public/images/hero.jpeg";
+import heroImage from "/public/images/hero-2.jpeg";
 
 const Hero = () => {
   return (
@@ -15,27 +15,42 @@ const Hero = () => {
     <Flex
       width="100%"
       backgroundColor="white"
-      direction={{ sm: "column", md: "column", lg: "column", xl: "row" }}
+      direction={{ s: "column", md: "row" }}
     >
       {/* left container */}
-      <Container minW="50%" p="0">
+      <Flex minW="50%" p="0" justify="center" align="center">
         <Flex
           minW="50%"
-          minH="500px"
+          minH={{ s: "300px" }}
           direction={["column"]}
           justify="center"
           align="center"
-          rowGap={["75px"]}
+          rowGap={{ s: "35px", lg: "75px" }}
         >
           {/* Left Container Heading */}
           <Container>
-            <Heading as="h2" variant="hero_h2" textAlign="center">
+            <Heading
+              as="h2"
+              variant="hero_h2"
+              fontSize={{ s: "2rem", xl: "2.5rem" }}
+              textAlign="center"
+            >
               New Collection
             </Heading>
-            <Heading as="h2" variant="hero_h1" textAlign="center">
+            <Heading
+              as="h2"
+              variant="hero_h1"
+              fontSize={{ s: "2rem", lg: "2.5rem", xl: "3rem" }}
+              textAlign="center"
+            >
               DROP FORTY
             </Heading>
-            <Heading as="h2" variant="hero_h2" textAlign="center">
+            <Heading
+              as="h2"
+              variant="hero_h2"
+              fontSize={{ s: "2rem", xl: "2.5rem" }}
+              textAlign="center"
+            >
               On Sell
             </Heading>
           </Container>
@@ -53,15 +68,10 @@ const Hero = () => {
             </Button>
           </Center>
         </Flex>
-      </Container>
+      </Flex>
       {/* right container */}
-      <Container
-        minW="50%"
-        minH="500px"
-        maxH={{ lg: "800px", xl: "500px" }}
-        p="0"
-      >
-        <Image src={heroImage} height={3000} />
+      <Container minW="50%" maxH="700px" p="0" m="0">
+        <Image src={heroImage} objectFit="intrinsic" />
       </Container>
     </Flex>
   );

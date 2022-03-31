@@ -19,7 +19,7 @@ const Banner = () => {
             shipping!
           </Text>
           <Button py="20px" px="30px">
-            Let's go!
+            Let&apos;s go!
           </Button>
         </Flex>
       </Container>

@@ -27,7 +27,7 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 // loading spinner
 import { TailSpin } from "react-loader-spinner";
 
-const signin = () => {
+const Signin = () => {
   // this to control if the button is loading
   const [isLoading, setIsLoading] = useState(false);
   // this to control if to show the error message
@@ -190,4 +190,4 @@ const signin = () => {
   );
 };
 
-export default signin;
+export default Signin;

@@ -3,7 +3,6 @@ import { extendTheme, theme as base } from "@chakra-ui/react";
 
 // Customize Breakpoints
 const breakpoints = {
-  s: "0px",
   sm: "480px",
   md: "768px",
   lg: "1024px",
@@ -43,6 +42,11 @@ const theme = extendTheme({
           fontFamily: "Merriweather, sans-serif",
           fontWeight: "300",
           fontStyle: "italic",
+        },
+        footer_logo: {
+          fontFamily: "Merriweather, sans-serif",
+          fontWeight: "900",
+          fontSize: ["md", "md", "lg", "lg"],
         },
       },
     },

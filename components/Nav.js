@@ -35,12 +35,21 @@ import {
 } from "react-icons/ai";
 // customize hook for geting window size
 import useWindowSize from "../src/utils/useWindowSize";
+// next auth
+import { signIn } from "next-auth/react";
 
 const Nav = () => {
   // get the width of thw window
   const { width } = useWindowSize();
   // this is for chakra ui drawer
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // const router = useRouter();
+
+  // const handleUser = () => {
+  //   router.push("/auth/signin");
+  // };
+
   return (
     <Box
       width="100%"
@@ -182,13 +191,15 @@ const Nav = () => {
                     </DrawerBody>
                     {/* Drawer Footer ( user, search) */}
                     <DrawerFooter>
-                      <Button
-                        colorScheme="white"
-                        color="#252f3e"
-                        variant="outline"
-                      >
-                        Login
-                      </Button>
+                      <Link href={"/auth/signin"} passHref>
+                        <Button
+                          colorScheme="white"
+                          color="#252f3e"
+                          variant="outline"
+                        >
+                          Login
+                        </Button>
+                      </Link>
                     </DrawerFooter>
                   </DrawerContent>
                 </Drawer>
@@ -196,11 +207,12 @@ const Nav = () => {
             )}
             {width >= 1024 && (
               <>
-                <IconButton
-                  aria-label="User"
-                  variant="iconbutton_nav"
-                  icon={<AiOutlineUser />}
-                />
+                <Link href={"/auth/signin"} passHref>
+                  <InnerLink>
+                    <AiOutlineUser />
+                  </InnerLink>
+                </Link>
+
                 <IconButton
                   aria-label="Search"
                   variant="iconbutton_nav"

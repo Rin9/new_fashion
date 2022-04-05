@@ -7,7 +7,7 @@ export const banner = [
   {
     isMenu: true,
     name: "Shop All",
-    sub_menu: ["Men", "Women", "Unisex"],
+    sub_menu: ["All", "Men", "Women", "Unisex"],
   },
   {
     isMenu: false,

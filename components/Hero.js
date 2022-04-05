@@ -15,24 +15,24 @@ const Hero = () => {
     <Flex
       width="100%"
       backgroundColor="white"
-      direction={{ s: "column", md: "row" }}
+      direction={{ base: "column", md: "row" }}
     >
       {/* left container */}
       <Flex minW="50%" p="0" justify="center" align="center">
         <Flex
           minW="50%"
-          minH={{ s: "300px" }}
+          minH={{ base: "300px" }}
           direction={["column"]}
           justify="center"
           align="center"
-          rowGap={{ s: "35px", lg: "75px" }}
+          rowGap={{ base: "35px", lg: "75px" }}
         >
           {/* Left Container Heading */}
           <Container>
             <Heading
               as="h2"
               variant="hero_h2"
-              fontSize={{ s: "2rem", xl: "2.5rem" }}
+              fontSize={{ base: "2rem", xl: "2.5rem" }}
               textAlign="center"
             >
               New Collection
@@ -40,7 +40,7 @@ const Hero = () => {
             <Heading
               as="h2"
               variant="hero_h1"
-              fontSize={{ s: "2rem", lg: "2.5rem", xl: "3rem" }}
+              fontSize={{ base: "2rem", lg: "2.5rem", xl: "3rem" }}
               textAlign="center"
             >
               DROP FORTY
@@ -48,7 +48,7 @@ const Hero = () => {
             <Heading
               as="h2"
               variant="hero_h2"
-              fontSize={{ s: "2rem", xl: "2.5rem" }}
+              fontSize={{ base: "2rem", xl: "2.5rem" }}
               textAlign="center"
             >
               On Sell

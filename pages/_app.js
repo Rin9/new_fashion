@@ -8,6 +8,7 @@ import theme from "../styles/theme/global";
 //progress bar
 import nProgress from "nprogress";
 import "../styles/nprogress.css";
+// loading spinner
 
 import Router from "next/router";
 
@@ -15,11 +16,16 @@ Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeComplete", nProgress.done);
 Router.events.on("routeChangeError", nProgress.done);
 
-function MyApp({ Component, pageProps }) {
+// test for next auth
+import { SessionProvider } from "next-auth/react";
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <SessionProvider session={session}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </SessionProvider>
   );
 }
 

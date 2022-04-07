@@ -3,15 +3,11 @@ import { Container } from "@chakra-ui/react";
 import Nav from "../components/Nav";
 import Hero from "../components/Hero";
 import Carousel from "../components/Carousel";
-import { most_popular } from "../data/dummy_data/all";
-import { new_arrival } from "../data/dummy_data/all";
 import Footer from "../components/Footer";
+import { getAllProductsByCollections } from "../src/data/products";
+import { getAllCategories } from "../src/data/categories";
 
-// this is for login test
-import { useSession } from "next-auth/react";
-
-export default function Home() {
-  const { data: session, status } = useSession();
+export default function Home({ collections, categories }) {
   return (
     <div>
       <Head>
@@ -23,16 +19,35 @@ export default function Home() {
         {/* up banner */}
         {/* <Banner /> */}
         {/* Nav bar */}
-        <Nav />
+        <Nav categories={categories} />
         {/* Hero */}
         <Hero />
-        {/* most popular Carousel */}
-        <Carousel title={"Most Popular"} cards={most_popular} />
-        {/* new arrival Carousel */}
-        <Carousel title={"New Arrivals"} cards={new_arrival} />
+        {/* Carousel */}
+        {collections &&
+          collections.map((item, index) => {
+            return (
+              <Carousel
+                key={item.id}
+                title={item.name}
+                cards={collections[index].products}
+              />
+            );
+          })}
         {/* Footer */}
         <Footer />
       </Container>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const collections = (await getAllProductsByCollections()) || [];
+  const { categories } = (await getAllCategories()) || [];
+
+  return {
+    props: {
+      collections,
+      categories,
+    },
+  };
 }

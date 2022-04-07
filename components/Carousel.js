@@ -116,7 +116,7 @@ const Carousel = ({ title, cards }) => {
 
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((url, index) => (
+        {cards.map((item, index) => (
           <Box
             key={index}
             height={"xl"}
@@ -124,7 +124,7 @@ const Carousel = ({ title, cards }) => {
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
-            backgroundImage={`url(${url})`}
+            backgroundImage={`url(${item.images[0].url})`}
             transitionProperty="all"
             transitionDuration="500ms"
             transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"

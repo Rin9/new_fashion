@@ -26,8 +26,9 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 // loading spinner
 import { TailSpin } from "react-loader-spinner";
+import { getAllCategories } from "../../src/data/categories";
 
-const Signin = () => {
+const Signin = ({ categories }) => {
   // this to control if the button is loading
   const [isLoading, setIsLoading] = useState(false);
   // this to control if to show the error message
@@ -101,7 +102,7 @@ const Signin = () => {
   return (
     <Container maxW={"100vw"} p="0" m="0" position="relative">
       {/* nav bar */}
-      <Nav />
+      <Nav categories={categories} />
       {/* loading, show the loading spinner */}
       {status === "loading" ? (
         // loading spinner
@@ -191,3 +192,13 @@ const Signin = () => {
 };
 
 export default Signin;
+
+export async function getStaticProps() {
+  const { categories } = (await getAllCategories()) || [];
+
+  return {
+    props: {
+      categories,
+    },
+  };
+}

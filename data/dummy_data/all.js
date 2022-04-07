@@ -8,22 +8,27 @@ export const banner = [
     isMenu: true,
     name: "Shop All",
     sub_menu: ["All", "Men", "Women", "Unisex"],
+    url: "",
   },
   {
     isMenu: false,
     name: "Outer",
+    url: "outer",
   },
   {
     isMenu: false,
     name: "Sweaters",
+    url: "sweaters",
   },
   {
     isMenu: false,
     name: "Wovens",
+    url: "wovens",
   },
   {
     isMenu: false,
     name: "Bottoms",
+    url: "bottoms",
   },
 ];
 

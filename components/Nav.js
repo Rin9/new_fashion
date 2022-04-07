@@ -35,20 +35,13 @@ import {
 } from "react-icons/ai";
 // customize hook for geting window size
 import useWindowSize from "../src/utils/useWindowSize";
-// next auth
-import { signIn } from "next-auth/react";
 
-const Nav = () => {
+const Nav = ({ categories }) => {
+  const menu = categories;
   // get the width of thw window
   const { width } = useWindowSize();
   // this is for chakra ui drawer
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  // const router = useRouter();
-
-  // const handleUser = () => {
-  //   router.push("/auth/signin");
-  // };
 
   return (
     <Box
@@ -74,9 +67,9 @@ const Nav = () => {
             </InnerLink>
           </Link>
           {/* banner menu (width >= 1024)*/}
-          {width >= 1024 && (
+          {width >= 1280 && (
             <HStack minH="80px" gap="30px">
-              {bannerData.map((item) => {
+              {menu.map((item) => {
                 if (item.isMenu) {
                   return (
                     <Menu key={`menu_${item.name}`}>
@@ -100,7 +93,11 @@ const Nav = () => {
                   );
                 } else {
                   return (
-                    <Link href="/" passHref key={`link_${item.name}`}>
+                    <Link
+                      href={`/products/${item.slug}`}
+                      passHref
+                      key={`link_${item.name}`}
+                    >
                       <InnerLink variant="link_logo">
                         <Text
                           variant={item.isSpecial && "text_bold"}
@@ -119,7 +116,7 @@ const Nav = () => {
           {/* User center, search, cart  */}
           <HStack minH="80px" gap="10px">
             {/* Left side menu */}
-            {width < 1024 && (
+            {width < 1280 && (
               <>
                 <IconButton
                   aria-label="Menu"
@@ -145,9 +142,13 @@ const Nav = () => {
                         borderColor="gray.200"
                         pb="20px"
                       >
-                        {bannerData.map((item) => {
+                        {menu.map((item) => {
                           return (
-                            <Link href="/" passHref key={`link_${item.name}`}>
+                            <Link
+                              href={`/products/${item.slug}`}
+                              passHref
+                              key={`link_${item.name}`}
+                            >
                               <InnerLink variant="link_logo">
                                 <Text
                                   variant={item.isSpecial && "text_bold"}

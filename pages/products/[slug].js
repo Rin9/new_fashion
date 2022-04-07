@@ -26,10 +26,10 @@ const Products = ({ params, categories, products }) => {
       </Head>
       {/* Nav bar */}
       <Nav categories={categories} />
-      {products.length > 0 ? (
+      {products?.length > 0 ? (
         <Container minH="500px" maxW="100vw" p="0" m="0">
           <Grid templateColumns="repeat(5, 1fr)" p="0" m="0">
-            {products.map((product) => {
+            {products?.map((product) => {
               return (
                 <GridItem
                   key={product.id}

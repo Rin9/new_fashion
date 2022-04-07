@@ -5,44 +5,68 @@ import {
   Heading,
   Grid,
   GridItem,
+  Box,
 } from "@chakra-ui/react";
 import React from "react";
+import Head from "next/head";
 import { getAllCategories } from "../../src/data/categories";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { getProductsByCategory } from "../../src/data/products";
-import useWindowSize from "../../src/utils/useWindowSize";
 
 const Products = ({ params, categories, products }) => {
   console.log("first", params);
   console.log("third", products);
-  const { width } = useWindowSize();
-  console.log(width);
   return (
     // main container
     <Container maxW={"100vw"} p="0" m="0" position="relative">
+      <Head>
+        <title>{params.slug} || New Fashion</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       {/* Nav bar */}
       <Nav categories={categories} />
-      <Container width="100vw" minH="500px" p="0" m="0">
-        {products.length > 0 ? (
-          <Container p="0" m="0" width="100vw">
-            <Grid templateColumns="repeat(5, 1fr)" p="0" m="0" width="100vw">
-              {products.map((product) => {
-                return (
-                  <GridItem
-                    key={product.id}
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="cover"
-                    backgroundImage={`url(${product.images[0].url})`}
-                    minH="400px"
-                    // width="285px"
-                  ></GridItem>
-                );
-              })}
-            </Grid>
-          </Container>
-        ) : (
+      {products.length > 0 ? (
+        <Container minH="500px" maxW="100vw" p="0" m="0">
+          <Grid templateColumns="repeat(5, 1fr)" p="0" m="0">
+            {products.map((product) => {
+              return (
+                <GridItem
+                  key={product.id}
+                  minH="400px"
+                  cursor="pointer"
+                  position="relative"
+                  backgroundPosition="center"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize="cover"
+                  backgroundImage={`url(${product.images[0].url})`}
+                  transitionProperty="all"
+                  transitionDuration="250ms"
+                  transitionTimingFunction="ease-in"
+                  _hover={{
+                    transform: "scale(1.1)",
+                    boxShadow: "dark-lg",
+                    rounded: "lg",
+                    zIndex: "10",
+                  }}
+                >
+                  <Box position="absolute" top="10px" left="20px">
+                    <Text variant="text_bold">{product.name}</Text>
+                  </Box>
+                </GridItem>
+              );
+            })}
+          </Grid>
+        </Container>
+      ) : (
+        <Flex
+          minH="500px"
+          maxW="100vw"
+          p="0"
+          m="0"
+          justify="center"
+          align={"center"}
+        >
           <Flex
             maxW="800px"
             minH="400px"
@@ -69,8 +93,8 @@ const Products = ({ params, categories, products }) => {
               </Text>
             </Flex>
           </Flex>
-        )}
-      </Container>
+        </Flex>
+      )}
       {/* Footer */}
       <Footer />
     </Container>

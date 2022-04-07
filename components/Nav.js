@@ -123,9 +123,8 @@ const Nav = ({ categories }) => {
                   variant="iconbutton_nav"
                   icon={<AiOutlineMenu />}
                   onClick={onOpen}
-                >
-                  Open
-                </IconButton>
+                />
+
                 <Drawer placement={"left"} onClose={onClose} isOpen={isOpen}>
                   <DrawerOverlay />
                   <DrawerContent>
@@ -149,7 +148,10 @@ const Nav = ({ categories }) => {
                               passHref
                               key={`link_${item.name}`}
                             >
-                              <InnerLink variant="link_logo">
+                              <InnerLink
+                                variant="link_logo"
+                                onClick={() => onClose()}
+                              >
                                 <Text
                                   variant={item.isSpecial && "text_bold"}
                                   color="black"
@@ -164,27 +166,42 @@ const Nav = ({ categories }) => {
                       {/* This stack is contact, about, etc.. */}
                       <VStack spacing="3" align="flex-start" mt="30px">
                         <Link href="/" passHref>
-                          <InnerLink variant="link_logo">
+                          <InnerLink
+                            variant="link_logo"
+                            onClick={() => onClose()}
+                          >
                             <Text color="black">ABOUT</Text>
                           </InnerLink>
                         </Link>
                         <Link href="/" passHref>
-                          <InnerLink variant="link_logo">
+                          <InnerLink
+                            variant="link_logo"
+                            onClick={() => onClose()}
+                          >
                             <Text color="black">CONTENT</Text>
                           </InnerLink>
                         </Link>
                         <Link href="/" passHref>
-                          <InnerLink variant="link_logo">
+                          <InnerLink
+                            variant="link_logo"
+                            onClick={() => onClose()}
+                          >
                             <Text color="black">SHIPPING & RETURNS</Text>
                           </InnerLink>
                         </Link>
                         <Link href="/" passHref>
-                          <InnerLink variant="link_logo">
+                          <InnerLink
+                            variant="link_logo"
+                            onClick={() => onClose()}
+                          >
                             <Text color="black">PRIVACY</Text>
                           </InnerLink>
                         </Link>
                         <Link href="/" passHref>
-                          <InnerLink variant="link_logo">
+                          <InnerLink
+                            variant="link_logo"
+                            onClick={() => onClose()}
+                          >
                             <Text color="black">INSTAGRAM</Text>
                           </InnerLink>
                         </Link>

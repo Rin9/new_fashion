@@ -3,8 +3,7 @@ import {
   Flex,
   Text,
   Heading,
-  Grid,
-  GridItem,
+  SimpleGrid,
   Box,
 } from "@chakra-ui/react";
 import React from "react";
@@ -28,10 +27,10 @@ const Products = ({ params, categories, products }) => {
       <Nav categories={categories} />
       {products?.length > 0 ? (
         <Container minH="500px" maxW="100vw" p="0" m="0">
-          <Grid templateColumns="repeat(5, 1fr)" p="0" m="0">
+          <SimpleGrid minChildWidth="300px" p="0" m="0">
             {products?.map((product) => {
               return (
-                <GridItem
+                <Box
                   key={product.id}
                   minH="400px"
                   cursor="pointer"
@@ -44,7 +43,7 @@ const Products = ({ params, categories, products }) => {
                   transitionDuration="250ms"
                   transitionTimingFunction="ease-in"
                   _hover={{
-                    transform: "scale(1.1)",
+                    transform: { base: "", xl: "scale(1.1)" },
                     boxShadow: "dark-lg",
                     rounded: "lg",
                     zIndex: "10",
@@ -53,10 +52,10 @@ const Products = ({ params, categories, products }) => {
                   <Box position="absolute" top="10px" left="20px">
                     <Text variant="text_bold">{product.name}</Text>
                   </Box>
-                </GridItem>
+                </Box>
               );
             })}
-          </Grid>
+          </SimpleGrid>
         </Container>
       ) : (
         <Flex

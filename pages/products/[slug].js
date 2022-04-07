@@ -21,7 +21,7 @@ const Products = ({ params, categories, products }) => {
     // main container
     <Container maxW={"100vw"} p="0" m="0" position="relative">
       <Head>
-        <title>{params.slug} || New Fashion</title>
+        <title>{params?.slug} || New Fashion</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Nav bar */}
@@ -107,7 +107,7 @@ export async function getStaticProps({ params }) {
   // const data = await getPostDetails(params.slug);
 
   // get products by slug
-  const { products } = (await getProductsByCategory(params.slug)) || [];
+  const { products } = (await getProductsByCategory(params?.slug)) || [];
   // get categories for nav bar
   const { categories } = (await getAllCategories()) || [];
 
@@ -119,7 +119,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const { categories } = await getAllCategories();
   return {
-    paths: categories.map(({ slug }) => ({ params: { slug } })),
+    paths: categories?.map(({ slug }) => ({ params: { slug } })),
     fallback: true,
   };
 }

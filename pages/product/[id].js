@@ -36,7 +36,7 @@ const Product = ({ params, categories, product }) => {
   // max quantity of certain size of product
   const [maxQuantity, setMaxQuantity] = useState(0);
   //get the sizes of product to use in custimize radio cards
-  const options = product.sizes;
+  const options = product?.sizes;
   //no size options, max quantity equals to the product total quantity
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Product = ({ params, categories, product }) => {
       };
     });
     setMaxQuantity(
-      product.sizes.filter((item) => item.name === value)[0].inventory
+      product?.sizes.filter((item) => item.name === value)[0].inventory
     );
   };
 

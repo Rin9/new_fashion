@@ -41,7 +41,7 @@ const Product = ({ params, categories, product }) => {
 
   useEffect(() => {
     if (options.length === 0) {
-      setMaxQuantity(product.total);
+      setMaxQuantity(product?.total);
     }
   }, []);
 
@@ -94,7 +94,7 @@ const Product = ({ params, categories, product }) => {
           p="0"
           m="0"
         >
-          {product.images.map((image, index) => {
+          {product?.images.map((image, index) => {
             return (
               <Image
                 boxSize={{ base: "100vw", lg: "50vw" }}
@@ -117,10 +117,10 @@ const Product = ({ params, categories, product }) => {
         >
           <Flex direction="column" rowGap="6">
             {/* product name */}
-            <Heading variant="heading_logo">{product.name}</Heading>
+            <Heading variant="heading_logo">{product?.name}</Heading>
             {/* product price */}
-            <Text variant="text_normal">{formatPrice(product.price)}</Text>
-            <Text variant="text_dec">{product.description}</Text>
+            <Text variant="text_normal">{formatPrice(product?.price)}</Text>
+            <Text variant="text_dec">{product?.description}</Text>
           </Flex>
           <Divider />
           {/* custimize radio card */}

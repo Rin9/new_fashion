@@ -32,7 +32,7 @@ import RadioCard from "../../components/RadioCard";
 const Product = ({ params, categories, product }) => {
   console.log("=-=-=-=-=-=", product);
   //size value
-  const [size, setSize] = useState({ id: product.id, size: null });
+  const [size, setSize] = useState({ id: product?.id, size: null });
   // max quantity of certain size of product
   const [maxQuantity, setMaxQuantity] = useState(0);
   //get the sizes of product to use in custimize radio cards
@@ -134,7 +134,7 @@ const Product = ({ params, categories, product }) => {
                     isDisabled: option.inventory === 0,
                   });
                   return (
-                    <RadioCard key={option.id} {...radio}>
+                    <RadioCard key={option?.id} {...radio}>
                       {option.name}
                     </RadioCard>
                   );

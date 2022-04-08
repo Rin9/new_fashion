@@ -13,6 +13,13 @@ const breakpoints = {
 const theme = extendTheme({
   breakpoints,
   components: {
+    Box: {
+      variants: {
+        disabled: {
+          fontSize: "xl",
+        },
+      },
+    },
     Text: {
       variants: {
         text_bold: {
@@ -22,8 +29,14 @@ const theme = extendTheme({
         },
         text_normal: {
           fontFamily: "Merriweather, sans-serif",
-          fontWeight: "100",
+          fontWeight: "700",
           fontSize: "lg",
+        },
+        text_dec: {
+          fontFamily: "Merriweather, sans-serif",
+          fontWeight: "300",
+          fontStyle: "Italic",
+          lineHeight: "8",
         },
       },
     },

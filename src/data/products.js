@@ -9,6 +9,22 @@ const client = new GraphQLClient(process.env.GRAPHCMS_ENDPOINT, {
 
 const graphAPI = process.env.GRAPHCMS_ENDPOINT;
 
+//get all products
+export const getAllProducts = async () => {
+  const query = gql`
+    query GetAllProducts {
+      products {
+        id
+        name
+        price
+        slug
+      }
+    }
+  `;
+  const result = await request(graphAPI, query);
+  return result;
+};
+
 // get all collections
 export const getAllCollections = async () => {
   const query = gql`
@@ -89,5 +105,36 @@ export const getProductsByCategory = async (category) => {
   `;
 
   const result = await request(graphAPI, query, { slug: category });
+  return result;
+};
+
+// get product by id
+export const getProductByID = async (id) => {
+  //get all products using collection ids
+  const query = gql`
+    query GetProductByID($id: ID!) {
+      product(where: { id: $id }) {
+        id
+        name
+        price
+        description
+        slug
+        images {
+          url
+        }
+        sizes {
+          ... on ProductSizeVariant {
+            id
+            name
+            inventory
+          }
+        }
+        description
+        total
+      }
+    }
+  `;
+
+  const result = await request(graphAPI, query, { id: id });
   return result;
 };

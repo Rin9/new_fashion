@@ -5,9 +5,11 @@ import {
   Heading,
   SimpleGrid,
   Box,
+  Link as InnerLink,
 } from "@chakra-ui/react";
 import React from "react";
 import Head from "next/head";
+import Link from "next/link";
 import { getAllCategories } from "../../src/data/categories";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
@@ -30,29 +32,35 @@ const Products = ({ params, categories, products }) => {
           <SimpleGrid minChildWidth="300px" p="0" m="0">
             {products?.map((product) => {
               return (
-                <Box
-                  key={product.id}
-                  minH="400px"
-                  cursor="pointer"
-                  position="relative"
-                  backgroundPosition="center"
-                  backgroundRepeat="no-repeat"
-                  backgroundSize="cover"
-                  backgroundImage={`url(${product.images[0].url})`}
-                  transitionProperty="all"
-                  transitionDuration="250ms"
-                  transitionTimingFunction="ease-in"
-                  _hover={{
-                    transform: { base: "", xl: "scale(1.1)" },
-                    boxShadow: "dark-lg",
-                    rounded: "lg",
-                    zIndex: "10",
-                  }}
+                <Link
+                  href={`/product/${product.id}`}
+                  passHref
+                  key={`link_${product.id}`}
                 >
-                  <Box position="absolute" top="10px" left="20px">
-                    <Text variant="text_bold">{product.name}</Text>
+                  <Box
+                    key={product.id}
+                    minH="400px"
+                    cursor="pointer"
+                    position="relative"
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    backgroundImage={`url(${product.images[0].url})`}
+                    transitionProperty="all"
+                    transitionDuration="250ms"
+                    transitionTimingFunction="ease-in"
+                    _hover={{
+                      transform: { base: "", xl: "scale(1.1)" },
+                      boxShadow: "dark-lg",
+                      rounded: "lg",
+                      zIndex: "10",
+                    }}
+                  >
+                    <Box position="absolute" top="10px" left="20px">
+                      <Text variant="text_bold">{product.name}</Text>
+                    </Box>
                   </Box>
-                </Box>
+                </Link>
               );
             })}
           </SimpleGrid>

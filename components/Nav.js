@@ -69,7 +69,7 @@ const Nav = ({ categories }) => {
           {/* banner menu (width >= 1024)*/}
           {width >= 1280 && (
             <HStack minH="80px" gap="30px">
-              {menu.map((item) => {
+              {menu?.map((item) => {
                 if (item.isMenu) {
                   return (
                     <Menu key={`menu_${item.name}`}>
@@ -141,7 +141,7 @@ const Nav = ({ categories }) => {
                         borderColor="gray.200"
                         pb="20px"
                       >
-                        {menu.map((item) => {
+                        {menu?.map((item) => {
                           return (
                             <Link
                               href={`/products/${item.slug}`}

@@ -40,7 +40,7 @@ const Product = ({ params, categories, product }) => {
   //no size options, max quantity equals to the product total quantity
 
   useEffect(() => {
-    if (options.length === 0) {
+    if (options?.length === 0) {
       setMaxQuantity(product?.total);
     }
   }, []);
@@ -126,9 +126,9 @@ const Product = ({ params, categories, product }) => {
           {/* custimize radio card */}
           <Box>
             <Text variant="text_bold">Size:</Text>
-            {options.length > 0 ? (
+            {options?.length > 0 ? (
               <HStack {...group} mt="20px">
-                {options.map((option) => {
+                {options?.map((option) => {
                   const radio = getRadioProps({
                     value: option.name,
                     isDisabled: option.inventory === 0,

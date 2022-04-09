@@ -13,11 +13,11 @@ import Link from "next/link";
 import { getAllCategories } from "../../src/data/categories";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import { getProductsByCategory } from "../../src/data/products";
+import { getAllProducts, getProductsByCategory } from "../../src/data/products";
 
 const Products = ({ params, categories, products }) => {
-  console.log("first", params);
-  console.log("third", products);
+  //console.log("first", params);
+  //console.log("third", products);
   return (
     // main container
     <Container maxW={"100vw"} p="0" m="0" position="relative">
@@ -34,12 +34,13 @@ const Products = ({ params, categories, products }) => {
               return (
                 <Link
                   href={`/product/${product.id}`}
-                  passHref
                   key={`link_${product.id}`}
+                  passHref
                 >
                   <Box
                     key={product.id}
                     minH="400px"
+                    maxW="600px"
                     cursor="pointer"
                     position="relative"
                     backgroundPosition="center"
@@ -112,9 +113,13 @@ export default Products;
 
 export async function getStaticProps({ params }) {
   // const data = await getPostDetails(params.slug);
-
+  let products;
   // get products by slug
-  const { products } = (await getProductsByCategory(params?.slug)) || [];
+  if (params?.slug === "all") {
+    products = (await getAllProducts()).products || [];
+  } else {
+    products = (await getProductsByCategory(params?.slug)).products || [];
+  }
   // get categories for nav bar
   const { categories } = (await getAllCategories()) || [];
 

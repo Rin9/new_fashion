@@ -33,12 +33,14 @@ const Product = ({ params, categories, product }) => {
   console.log("=-=-=-=-=-=", product);
   //size value
   const [size, setSize] = useState({ id: product?.id, size: null });
+
+  // console.log(size);
   // max quantity of certain size of product
   const [maxQuantity, setMaxQuantity] = useState(0);
   //get the sizes of product to use in custimize radio cards
   const options = product?.sizes;
-  //no size options, max quantity equals to the product total quantity
 
+  //no size options, max quantity equals to the product total quantity
   useEffect(() => {
     if (options?.length === 0) {
       setMaxQuantity(product?.total);
@@ -111,7 +113,8 @@ const Product = ({ params, categories, product }) => {
           minH="500px"
           paddingTop="30px"
           px="40px"
-          m="0"
+          mx="0"
+          marginBottom="50px"
           align="flex-start"
           spacing="6"
         >

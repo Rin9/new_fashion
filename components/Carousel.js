@@ -4,6 +4,7 @@ import { Box, Heading, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+import Link from "next/link";
 
 // Settings for the slider
 const settings = {
@@ -110,21 +111,23 @@ const Carousel = ({ title, cards }) => {
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
         {cards.map((item, index) => (
-          <Box
-            key={index}
-            height={"xl"}
-            position="relative"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            backgroundSize="cover"
-            backgroundImage={`url(${item.images[0].url})`}
-            transitionProperty="all"
-            transitionDuration="500ms"
-            transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"
-            _hover={{
-              transform: "scale(1.1)",
-            }}
-          />
+          <Link href={`/product/${item.id}`} key={`link_${item.id}`}>
+            <Box
+              key={index}
+              height={"xl"}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="cover"
+              backgroundImage={`url(${item.images[0].url})`}
+              transitionProperty="all"
+              transitionDuration="500ms"
+              transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"
+              _hover={{
+                transform: "scale(1.1)",
+              }}
+            />
+          </Link>
         ))}
       </Slider>
     </Box>

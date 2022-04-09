@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import { Container } from "@chakra-ui/react";
 import Nav from "../components/Nav";
@@ -8,6 +9,9 @@ import { getAllProductsByCollections } from "../src/data/products";
 import { getAllCategories } from "../src/data/categories";
 
 export default function Home({ collections, categories }) {
+  // console.log("collection", collections);
+  // console.log("categories", categories);
+
   return (
     <div>
       <Head>

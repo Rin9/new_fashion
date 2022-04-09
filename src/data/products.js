@@ -16,6 +16,9 @@ export const getAllProducts = async () => {
       products {
         id
         name
+        images {
+          url
+        }
         price
         slug
       }

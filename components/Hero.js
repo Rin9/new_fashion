@@ -7,6 +7,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import Link from "next/link";
 import heroImage from "/public/images/hero-2.jpeg";
 
 const Hero = () => {
@@ -64,7 +65,7 @@ const Hero = () => {
               py={["30px"]}
               px={["30px"]}
             >
-              Order Now
+              <Link href={"/products/drop-forty"}>Order Now</Link>
             </Button>
           </Center>
         </Flex>

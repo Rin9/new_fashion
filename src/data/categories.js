@@ -16,5 +16,11 @@ export const getAllCategories = async () => {
     }
   `;
   const result = await request(graphAPI, query);
+  // add the shop all category
+  result.categories.splice(1, 0, {
+    name: "Shop All",
+    slug: "all",
+    isSpecial: false,
+  });
   return result;
 };

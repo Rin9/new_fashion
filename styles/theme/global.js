@@ -56,6 +56,11 @@ const theme = extendTheme({
           fontWeight: "300",
           fontStyle: "italic",
         },
+        hero_h3: {
+          fontFamily: "Merriweather, sans-serif",
+          fontWeight: "300",
+          fontSize: "md",
+        },
         footer_logo: {
           fontFamily: "Merriweather, sans-serif",
           fontWeight: "900",

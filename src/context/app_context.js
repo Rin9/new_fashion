@@ -45,8 +45,11 @@ export function AppWrapper({ children }) {
     });
   };
   //toggle amount
-  const toggleAmount = (id, value) => {
-    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
+  const toggleAmount = (id, size, toggle) => {
+    dispatch({
+      type: TOGGLE_CART_ITEM_AMOUNT,
+      payload: { id, size, toggle },
+    });
   };
 
   //clear cart
@@ -55,10 +58,11 @@ export function AppWrapper({ children }) {
   };
 
   //everytime cart changes, change the localstorage
-  // useEffect(() => {
-  //   dispatch({ type: COUNT_CART_TOTALS });
-  //   localStorage.setItem("cart", JSON.stringify(state.cart));
-  // }, [state.cart]);
+  useEffect(() => {
+    // dispatch({ type: COUNT_CART_TOTALS });
+    console.log("cart changed");
+    localStorage.setItem("cart", JSON.stringify(state.cart));
+  }, [state.cart]);
 
   // const contextValue = useMemo(() => {
   //   return [state, dispatch];

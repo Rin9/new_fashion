@@ -22,13 +22,13 @@ import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <AppWrapper>
-      <SessionProvider session={session}>
-        <ChakraProvider theme={theme}>
+    <SessionProvider session={session}>
+      <ChakraProvider theme={theme}>
+        <AppWrapper>
           <Component {...pageProps} />
-        </ChakraProvider>
-      </SessionProvider>
-    </AppWrapper>
+        </AppWrapper>
+      </ChakraProvider>
+    </SessionProvider>
   );
 }
 

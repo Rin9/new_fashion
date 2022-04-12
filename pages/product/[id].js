@@ -30,7 +30,7 @@ import { formatPrice } from "../../src/utils/helper";
 import RadioCard from "../../components/RadioCard";
 
 const Product = ({ params, categories, product }) => {
-  console.log("=-=-=-=-=-=", product);
+  // console.log("=-=-=-=-=-=", product);
   //size value
   const [size, setSize] = useState({ id: product?.id, size: null });
 

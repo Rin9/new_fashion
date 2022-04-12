@@ -11,7 +11,6 @@ import { getAllCategories } from "../src/data/categories";
 export default function Home({ collections, categories }) {
   // console.log("collection", collections);
   // console.log("categories", categories);
-
   return (
     <div>
       <Head>

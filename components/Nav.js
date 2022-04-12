@@ -50,12 +50,12 @@ import {
 import useWindowSize from "../src/utils/useWindowSize";
 // use cart context
 import { useAppContext } from "../src/context/app_context";
+import CartItem from "./CartItem";
 
 const Nav = ({ categories }) => {
   const menu = categories;
-
-  // get the cart:
-  const { cart, removeItem } = useAppContext();
+  // get the cart and actions for editing cart:
+  const { cart, removeItem, toggleAmount } = useAppContext();
   //this is set to use for the remove item function
   const [productRemoved, setProductRemoved] = React.useState(null);
 
@@ -342,7 +342,12 @@ const Nav = ({ categories }) => {
                             </Button>
                             <Button
                               colorScheme="red"
-                              onClick={() => removeItem(productRemoved)}
+                              onClick={() => {
+                                //remove the item
+                                removeItem(productRemoved);
+                                //close the alert overlay
+                                onCloseAlert();
+                              }}
                               ml={3}
                             >
                               Remove
@@ -356,37 +361,47 @@ const Nav = ({ categories }) => {
                     {cart?.length > 0 ? (
                       cart.map((item) => {
                         return (
-                          <Flex key={item.id} direction="row" columnGap="5">
-                            <Image
-                              src={item.image}
-                              boxSize="150px"
-                              objectFit="cover"
-                              alt={item.name}
-                              rounded="lg"
-                            />
-                            <Flex direction="column" rowGap="5">
-                              <Heading variant="hero_h3">{item.name}</Heading>
-                              <Text variant="text_normal">
-                                Size: {item.size}
-                              </Text>
-                              <NumberInput
-                                defaultValue={item.number}
-                                min={1}
-                                max={item.max}
-                              >
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                  <NumberIncrementStepper />
-                                  <NumberDecrementStepper />
-                                </NumberInputStepper>
-                              </NumberInput>
-                              <Button
-                                onClick={() => handleRemove(item.id, item.size)}
-                              >
-                                Remove
-                              </Button>
-                            </Flex>
-                          </Flex>
+                          <CartItem
+                            key={item?.id + item?.size}
+                            item={item}
+                            handleRemove={handleRemove}
+                            toggleAmount={toggleAmount}
+                          />
+                          // <Flex
+                          //   key={item.id + item.size}
+                          //   direction="row"
+                          //   columnGap="5"
+                          // >
+                          //   <Image
+                          //     src={item.image}
+                          //     boxSize="150px"
+                          //     objectFit="cover"
+                          //     alt={item.name}
+                          //     rounded="lg"
+                          //   />
+                          //   <Flex direction="column" rowGap="5">
+                          //     <Heading variant="hero_h3">{item.name}</Heading>
+                          //     <Text variant="text_normal">
+                          //       Size: {item.size}
+                          //     </Text>
+                          //     <NumberInput
+                          //       defaultValue={item.number}
+                          //       min={1}
+                          //       max={item.max}
+                          //     >
+                          //       <NumberInputField />
+                          //       <NumberInputStepper>
+                          //         <NumberIncrementStepper />
+                          //         <NumberDecrementStepper />
+                          //       </NumberInputStepper>
+                          //     </NumberInput>
+                          //     <Button
+                          //       onClick={() => handleRemove(item.id, item.size)}
+                          //     >
+                          //       Remove
+                          //     </Button>
+                          //   </Flex>
+                          // </Flex>
                         );
                       })
                     ) : (

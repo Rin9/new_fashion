@@ -23,15 +23,10 @@ export function AppWrapper({ children }) {
   //console.log("This is in app_context state: ", state);
 
   // add to cart
-  const addToCart = (id, size, amount, product) => {
+  const addToCart = (product) => {
     dispatch({
       type: ADD_TO_CART,
-      payload: {
-        id,
-        size,
-        amount,
-        product,
-      },
+      payload: product,
     });
   };
   // remove item from cart
@@ -45,10 +40,10 @@ export function AppWrapper({ children }) {
     });
   };
   //toggle amount
-  const toggleAmount = (id, size, toggle) => {
+  const toggleAmount = (id, size, toggle, inputAmount) => {
     dispatch({
       type: TOGGLE_CART_ITEM_AMOUNT,
-      payload: { id, size, toggle },
+      payload: { id, size, toggle, inputAmount },
     });
   };
 
@@ -60,7 +55,6 @@ export function AppWrapper({ children }) {
   //everytime cart changes, change the localstorage
   useEffect(() => {
     // dispatch({ type: COUNT_CART_TOTALS });
-    console.log("cart changed");
     localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
 

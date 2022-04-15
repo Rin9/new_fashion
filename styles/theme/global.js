@@ -113,6 +113,13 @@ const theme = extendTheme({
         },
       },
     },
+    AlertDialog: {
+      variants: {
+        alert: {
+          size: "md",
+        },
+      },
+    },
   },
 });
 

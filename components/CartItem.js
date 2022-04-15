@@ -32,7 +32,11 @@ const CartItem = ({ item, handleRemove, toggleAmount }) => {
         <Heading variant="hero_h3">{item.name}</Heading>
         <Text variant="text_normal">Size: {item.size}</Text>
         <NumberInput defaultValue={item.number} min={1} max={item.max}>
-          <NumberInputField />
+          <NumberInputField
+            onChange={(e) =>
+              toggleAmount(item.id, item.size, "change", e.target.value)
+            }
+          />
           <NumberInputStepper>
             <NumberIncrementStepper
               onClick={() => {

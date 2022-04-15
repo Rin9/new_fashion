@@ -110,7 +110,7 @@ const CarouselInPage = ({ cards }) => {
 
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((item, index) => (
+        {cards?.map((item, index) => (
           <Box
             key={index}
             height={"xl"}
